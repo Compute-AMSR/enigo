@@ -1,6 +1,7 @@
 use std::{borrow::Cow, ffi::CString, ptr};
 use std::{thread, time};
 use std::time::Duration;
+use rand::Rng;
 
 use libc::{c_char, c_int, c_ulong, c_void, useconds_t};
 
