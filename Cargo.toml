@@ -20,6 +20,7 @@ exclude = [".github", ".vscode", "examples", ".gitignore", "rustfmt.toml"]
 [dependencies]
 serde = { version = "1.0", optional = true }
 serde_derive = { version = "1.0", optional = true }
+rand = "0.8.5"
 
 [dev-dependencies]
 tungstenite = "0.20"
