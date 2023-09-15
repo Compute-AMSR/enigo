@@ -68,7 +68,7 @@ where
             Token::Sequence(buffer) => {
                 for key in buffer.chars() {
                     let mut rng = rand::thread_rng();
-                    let randDelay: u64 = rng.gen();
+                    let randDelay: u64 = rng.gen_range(500..1500);
                     thread::sleep(Duration::from_millis(randDelay));
                     enigo.key_click(Key::Layout(key));
                 }
