@@ -1,7 +1,4 @@
 use std::{borrow::Cow, ffi::CString, ptr};
-use std::{thread, time};
-use std::time::Duration;
-use rand::Rng;
 
 use libc::{c_char, c_int, c_ulong, c_void, useconds_t};
 
@@ -339,15 +336,12 @@ impl KeyboardControllable for Enigo {
         }
     }
     fn key_click(&mut self, key: Key) {
-        let mut rng = rand::thread_rng();
-        let randDelay: u64 = rng.gen();
         let string = CString::new(&*keysequence(key)).unwrap();
         unsafe {
             xdo_send_keysequence_window(
                 self.xdo,
                 CURRENT_WINDOW,
                 string.as_ptr(),
-                thread::sleep(Duration::from_millis(randDelay));
                 self.delay as useconds_t,
             );
         }
