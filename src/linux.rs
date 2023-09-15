@@ -340,7 +340,7 @@ impl KeyboardControllable for Enigo {
     }
     fn key_click(&mut self, key: Key) {
         let mut rng = rand::thread_rng();
-        let randDelay: u32 = rng.gen();
+        let randDelay: u64 = rng.gen();
         let string = CString::new(&*keysequence(key)).unwrap();
         unsafe {
             xdo_send_keysequence_window(
