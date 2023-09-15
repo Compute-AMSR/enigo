@@ -1,5 +1,8 @@
 use std::error::Error;
 use std::fmt;
+use std::{thread, time};
+use std::time::Duration;
+use rand::Rng;
 
 use crate::{Key, KeyboardControllable};
 
@@ -64,6 +67,9 @@ where
         match token {
             Token::Sequence(buffer) => {
                 for key in buffer.chars() {
+                    let mut rng = rand::thread_rng();
+                    let randDelay: u64 = rng.gen();
+                    thread::sleep(Duration::from_millis(randDelay));
                     enigo.key_click(Key::Layout(key));
                 }
             }
